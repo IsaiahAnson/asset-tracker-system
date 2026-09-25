@@ -37,10 +37,10 @@ const WORKFLOW_STATUS_LABELS: Record<string, string> = {
 const CATEGORY_POSTURE: Record<string, { status: string; tone: CategoryRollupRow["tone"]; label: string }> = {
   computers: { label: "Computers", status: "In build", tone: "green" },
   firearms: { label: "Firearms", status: "Access gated", tone: "red" },
-  vehicles: { label: "Vehicles", status: "Pilot backlog", tone: "yellow" },
-  radios: { label: "Radios", status: "Pilot backlog", tone: "yellow" },
-  cell_phones: { label: "Cell phones", status: "Pilot backlog", tone: "gray" },
-  investigative_equipment: { label: "Investigative equipment", status: "Pilot backlog", tone: "cyan" }
+  vehicles: { label: "Vehicles", status: "Planned", tone: "yellow" },
+  radios: { label: "Radios", status: "Planned", tone: "yellow" },
+  cell_phones: { label: "Cell phones", status: "Planned", tone: "gray" },
+  investigative_equipment: { label: "Investigative equipment", status: "Planned", tone: "cyan" }
 };
 
 function fmt(n: number): string {

@@ -890,3 +890,14 @@
     border-bottom: none;
   }
 }
+
+/* Dark theme: the checklist tints above are light-surface colors. Swap them for
+   translucent tints so row text keeps contrast on dark cards. */
+[data-theme="dark"] .verification-checklist__item--passed { background: rgba(46, 133, 64, 0.14); }
+[data-theme="dark"] .verification-checklist__item--pending { background: rgba(181, 137, 0, 0.16); }
+[data-theme="dark"] .verification-checklist__item--failed,
+[data-theme="dark"] .verification-checklist__item--expired { background: rgba(181, 9, 9, 0.18); }
+[data-theme="dark"] .verification-checklist__item--missing { background: transparent; }
+[data-theme="dark"] .verification-checklist__banner--cleared { background: rgba(46, 133, 64, 0.16); color: #7fd18b; }
+[data-theme="dark"] .verification-checklist__banner--blocked { background: rgba(181, 137, 0, 0.16); color: #f2c14e; }
+[data-theme="dark"] .workflow-lane__header h2 { color: var(--usa-primary-light); }

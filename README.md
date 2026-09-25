@@ -1,11 +1,26 @@
 # Asset Tracker System
 
+[![CI](https://github.com/IsaiahAnson/asset-tracker-system/actions/workflows/ci.yml/badge.svg)](https://github.com/IsaiahAnson/asset-tracker-system/actions/workflows/ci.yml)
+
 A full-stack asset lifecycle and custody management app for public-sector organizations.
 It tracks who holds every piece of equipment, how it moved between people and offices, and who
 approved each change. Every write is recorded in an audit log.
 
 All organizations, people, asset tags and serial numbers in the seed data are fictional
 ("Northwind Agency").
+
+![Asset Tracker dashboard](docs/screenshots/dashboard.png)
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Asset detail with admin-defined custom fields](docs/screenshots/asset-detail.png) | ![Firearm record with the mandatory verification checklist](docs/screenshots/firearm-detail.png) |
+| **Asset detail** with custody history, audit trail and admin-defined custom fields | **Firearm record** with sensitivity flags and the mandatory verification checklist |
+| ![Customize Form admin builder](docs/screenshots/custom-fields.png) | ![Audit log](docs/screenshots/audit-log.png) |
+| **Customize Form**: admins add fields with a live preview, no code change | **Audit log** with filters and CSV export |
+| ![Workflow operations](docs/screenshots/workflows.png) | ![Dashboard in light theme](docs/screenshots/dashboard-light.png) |
+| **Workflows** for onboarding, offboarding, transfer and disposition | **Light theme**, switchable from the header |
 
 ## Features
 
@@ -61,9 +76,14 @@ The database health check is at `/api/health/db`.
 ## Tests
 
 ```bash
+npm run lint
+npm run typecheck
 npm test                  # unit tests
 DATABASE_URL=... npm test # also runs the database integration tests
 ```
+
+GitHub Actions runs lint, type checking, the full test suite against Postgres, and a
+production build on every push.
 
 Integration tests skip automatically when `DATABASE_URL` is not set.
 

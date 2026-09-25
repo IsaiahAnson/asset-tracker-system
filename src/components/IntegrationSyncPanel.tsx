@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { StatusTag } from "@/components/StatusTag";
 
 type SyncEvent = {
@@ -40,22 +40,28 @@ export function IntegrationSyncPanel() {
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState<string>("all");
 
-  const load = useCallback(async () => {
-    try {
-      const res = await fetch("/api/integrations/sync", { cache: "no-store" });
-      if (!res.ok) throw new Error("status");
-      setSnap(await res.json());
-      setError(false);
-    } catch {
-      setError(true);
-    }
-  }, []);
-
   useEffect(() => {
-    load();
-    const id = setInterval(load, 8_000);
-    return () => clearInterval(id);
-  }, [load]);
+    let cancelled = false;
+    async function poll() {
+      try {
+        const res = await fetch("/api/integrations/sync", { cache: "no-store" });
+        if (!res.ok) throw new Error("status");
+        const next = await res.json();
+        if (!cancelled) {
+          setSnap(next);
+          setError(false);
+        }
+      } catch {
+        if (!cancelled) setError(true);
+      }
+    }
+    void poll();
+    const id = setInterval(poll, 8_000);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, []);
 
   async function sync() {
     setSyncing(true);

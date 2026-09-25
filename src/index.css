@@ -103,7 +103,7 @@ html, body, #root { height: 100%; overflow: hidden; }
 
   1. --usa-white remaps to #141414. DO NOT use var(--usa-white) as a text or
      icon color inside .usa-header or any surface that stays dark. Use
-     hardcoded #fff there (see pitfall 13.9 in tdds.md).
+     hardcoded #fff there.
 
   2. --usa-primary-lighter remaps to rgba(80,154,224,.16) — a 16% opacity
      blue that is invisible on nearly any background. Never use it for text.
@@ -375,7 +375,7 @@ code {
 .usa-header__logout {
   background: transparent;
   border: 1px solid rgba(255,255,255,.35);
-  color: var(--usa-primary-lighter);
+  color: #d9e8f6; /* hardcoded: header stays dark in both themes */
   padding: 5px 12px;
   border-radius: var(--radius);
   font-size: 13px;
@@ -386,7 +386,7 @@ code {
 .usa-header__logout:hover {
   background: rgba(255,255,255,.1);
   border-color: rgba(255,255,255,.6);
-  color: var(--usa-white);
+  color: #fff;
 }
 
 /* ── Account Dropdown ────────────────────────────────────────────────────── */
@@ -1605,7 +1605,7 @@ code {
 .login-card__header {
   background: var(--usa-primary-darker);
   padding: var(--space-4);
-  color: var(--usa-white);
+  color: #fff; /* header stays navy in both themes */
 }
 .login-card__agency {
   font-size: 11px;
@@ -1619,10 +1619,10 @@ code {
   font-family: var(--font-serif);
   font-size: 26px;
   font-weight: 900;
-  color: var(--usa-white);
+  color: #fff;
   line-height: 1.15;
 }
-.login-card__subtitle { font-size: 14px; color: var(--usa-primary-lighter); margin-top: 6px; }
+.login-card__subtitle { font-size: 14px; color: #d9e8f6; margin-top: 6px; }
 .login-card__mock-banner {
   background: var(--usa-warning-lighter);
   color: var(--usa-warning-darker);

@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 export type FlashType = "success" | "error" | "info";
 export type Flash = { type: FlashType; message: string };
 
-const FLASH_COOKIE = "tdds-flash";
+const FLASH_COOKIE = "ats-flash";
 
 // Sets a short-lived flash message that the next rendered page surfaces as a
 // toast. Call from a Server Action after a mutation succeeds (or fails).

@@ -3,6 +3,7 @@
 import { useFormStatus } from "react-dom";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { useIsClient } from "@/lib/use-is-client";
 
 // Reusable submit button for server-action forms.
 //   - Shows a pending label while the action runs (prevents double-submits).
@@ -27,11 +28,9 @@ export function SubmitButton({
 }) {
   const { pending } = useFormStatus();
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const confirmRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => setMounted(true), []);
 
   // Focus the Confirm button when the modal opens, restore focus to the
   // triggering button when it closes. Restore ONLY on a true close (open

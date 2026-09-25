@@ -68,10 +68,6 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <div className="usa-alert usa-alert--info">
-        <strong>Release sequencing.</strong> Computers are the first end-to-end module, followed by
-        migration plus firearms controls, then workflow approvals and notifications.
-      </div>
 
       <section className="usa-card mt-3" aria-label="Needs attention">
         <div className="usa-card__header">
@@ -149,7 +145,7 @@ export default async function DashboardPage() {
                   <tr>
                     <th scope="col">Category</th>
                     <th scope="col">Records</th>
-                    <th scope="col">Release posture</th>
+                    <th scope="col">Module status</th>
                   </tr>
                 </thead>
                 <tbody>

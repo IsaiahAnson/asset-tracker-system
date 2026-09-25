@@ -76,9 +76,9 @@ export default async function AssetsPage({
             type="button"
             disabled
             aria-disabled="true"
-            title="The Migration Utility is part of Phase 2. This control will be enabled when that module ships."
+            title="The migration utility is on the roadmap. This control will be enabled when that module ships."
           >
-            Import legacy export (Phase 2)
+            Import legacy export (coming soon)
           </button>
           {canWrite ? (
             <Link className="usa-button usa-button--primary" href="/assets#asset-create">

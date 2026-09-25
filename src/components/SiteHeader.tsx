@@ -17,7 +17,7 @@ export async function SiteHeader() {
         />
         <span className="usa-header__branding">
           <span className="usa-header__agency">Northwind Agency</span>
-          <span className="usa-header__app-name">Asset Management</span>
+          <span className="usa-header__app-name">Asset Tracker</span>
         </span>
       </Link>
 

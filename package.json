@@ -11,24 +11,28 @@
     "test:watch": "vitest",
     "db:up": "docker compose up -d postgres",
     "db:down": "docker compose down",
-    "db:reset": "docker compose down -v && docker compose up -d postgres"
+    "db:reset": "docker compose down -v && docker compose up -d postgres",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "latest",
+    "next": "^16.2.6",
     "pg": "^8.20.0",
-    "react": "latest",
-    "react-dom": "latest"
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@types/node": "latest",
+    "@types/node": "^25.7.0",
     "@types/pg": "^8.20.0",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
-    "typescript": "latest",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.6",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
   "license": "UNLICENSED",
-  "author": "Isaiah Anson"
+  "author": "Isaiah Anson",
+  "engines": {
+    "node": ">=20"
+  }
 }

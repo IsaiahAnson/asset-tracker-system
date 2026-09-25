@@ -8,10 +8,10 @@ export const assetStats = [
 export const categoryRollup = [
   { category: "Computers", count: "3,248", status: "In build", tone: "green" },
   { category: "Firearms", count: "418", status: "Access gated", tone: "red" },
-  { category: "Vehicles", count: "286", status: "Pilot backlog", tone: "yellow" },
-  { category: "Radios", count: "1,104", status: "Pilot backlog", tone: "yellow" },
-  { category: "Cell phones", count: "2,972", status: "Pilot backlog", tone: "gray" },
-  { category: "Investigative equipment", count: "2,972", status: "Pilot backlog", tone: "cyan" }
+  { category: "Vehicles", count: "286", status: "Planned", tone: "yellow" },
+  { category: "Radios", count: "1,104", status: "Planned", tone: "yellow" },
+  { category: "Cell phones", count: "2,972", status: "Planned", tone: "gray" },
+  { category: "Investigative equipment", count: "2,972", status: "Planned", tone: "cyan" }
 ];
 
 export const computerAssets = [

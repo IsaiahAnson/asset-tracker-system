@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { useIsClient } from "@/lib/use-is-client";
 import { useFormStatus } from "react-dom";
 import { SubmitButton } from "@/components/SubmitButton";
 
@@ -43,9 +44,7 @@ export function ModalForm({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useIsClient();
 
   useEffect(() => {
     if (!open) return;

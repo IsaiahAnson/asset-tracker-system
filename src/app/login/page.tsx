@@ -13,7 +13,7 @@ export default async function LoginPage() {
         <div className="login-card__header">
           <div className="login-card__agency">Northwind Agency</div>
           <div className="login-card__title">Asset Tracker System</div>
-          <div className="login-card__subtitle">Secure PIV/CAC authentication required</div>
+          <div className="login-card__subtitle">Sign in to manage assets, custody and approvals</div>
         </div>
         <div className="login-card__mock-banner" role="status" aria-label="Development notice">
           <strong>SSO/PIV mock:</strong> this is the development login picker only. Production sign-in via SSO or PIV/CAC with HRIS groups is a later milestone.
