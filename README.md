@@ -86,3 +86,8 @@ src/components/     shared UI components
 src/lib/            data access, authorization and domain logic
 src/lib/__tests__/  Vitest suites
 ```
+
+## License
+
+Copyright (c) 2026 Isaiah Anson. All rights reserved. The source is published for viewing and
+evaluation only. See [LICENSE](LICENSE) for details.

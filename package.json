@@ -28,5 +28,7 @@
     "eslint-config-next": "latest",
     "typescript": "latest",
     "vitest": "^4.1.7"
-  }
+  },
+  "license": "UNLICENSED",
+  "author": "Isaiah Anson"
 }
