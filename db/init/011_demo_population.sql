@@ -23,22 +23,22 @@ UPDATE groups child SET parent_group_id = parent.id
 INSERT INTO app_users (external_id, email, personal_email, display_name, group_id, firearm_access)
 SELECT v.ext, v.email, v.pemail, v.name, g.id, v.fa
 FROM (VALUES
-  ('hr:slindgren','sarah.lindgren@northwind.example','sarah.lindgren@example.com','Sarah Lindgren','NWA-HQ', false),
-  ('hr:mwebb','marcus.webb@northwind.example','marcus.webb@example.com','Marcus Webb','NWA-ATL', true),
-  ('hr:ecastillo','elena.castillo@northwind.example','elena.castillo@example.com','Elena Castillo','NWA-DAL', false),
-  ('hr:dbrooks','devon.brooks@northwind.example','devon.brooks@example.com','Devon Brooks','NWA-HQ', false),
-  ('hr:arahman','aisha.rahman@northwind.example','aisha.rahman@example.com','Aisha Rahman','NWA-CHI', false),
-  ('hr:cstone','caleb.stone@northwind.example','caleb.stone@example.com','Caleb Stone','NWA-OAK', false),
-  ('hr:npetrov','nina.petrov@northwind.example','nina.petrov@example.com','Nina Petrov','NWA-HQ', true),
-  ('hr:ohaddad','omar.haddad@northwind.example','omar.haddad@example.com','Omar Haddad','NWA-ATL', false),
-  ('hr:rmendez','rosa.mendez@northwind.example','rosa.mendez@example.com','Rosa Mendez','NWA-DAL', false),
-  ('hr:twalsh','theo.walsh@northwind.example','theo.walsh@example.com','Theo Walsh','NWA-CHI', false),
-  ('hr:gokafor','grace.okafor@northwind.example','grace.okafor@example.com','Grace Okafor','NWA-HQ', false),
-  ('hr:hschmidt','henry.schmidt@northwind.example','henry.schmidt@example.com','Henry Schmidt','NWA-OAK', false),
-  ('hr:lnakamura','lila.nakamura@northwind.example','lila.nakamura@example.com','Lila Nakamura','NWA-ATL', true),
-  ('hr:vreyes','victor.reyes@northwind.example','victor.reyes@example.com','Victor Reyes','NWA-DAL', false),
-  ('hr:mpatel','maya.patel@northwind.example','maya.patel@example.com','Maya Patel','NWA-HQ', false),
-  ('hr:dcho','daniel.cho@northwind.example','daniel.cho@example.com','Daniel Cho','NWA-CHI', false)
+  ('hr:ehayes','emily.hayes@northwind.example','emily.hayes@example.com','Emily Hayes','NWA-HQ', false),
+  ('hr:nprice','nathan.price@northwind.example','nathan.price@example.com','Nathan Price','NWA-ATL', true),
+  ('hr:sramirez','sofia.ramirez@northwind.example','sofia.ramirez@example.com','Sofia Ramirez','NWA-DAL', false),
+  ('hr:kgrant','kevin.grant@northwind.example','kevin.grant@example.com','Kevin Grant','NWA-HQ', false),
+  ('hr:hlee','hannah.lee@northwind.example','hannah.lee@example.com','Hannah Lee','NWA-CHI', false),
+  ('hr:rmitchell','ryan.mitchell@northwind.example','ryan.mitchell@example.com','Ryan Mitchell','NWA-OAK', false),
+  ('hr:lbishop','laura.bishop@northwind.example','laura.bishop@example.com','Laura Bishop','NWA-HQ', true),
+  ('hr:sturner','samuel.turner@northwind.example','samuel.turner@example.com','Samuel Turner','NWA-ATL', false),
+  ('hr:itorres','isabel.torres@northwind.example','isabel.torres@example.com','Isabel Torres','NWA-DAL', false),
+  ('hr:oparker','owen.parker@northwind.example','owen.parker@example.com','Owen Parker','NWA-CHI', false),
+  ('hr:cadams','chloe.adams@northwind.example','chloe.adams@example.com','Chloe Adams','NWA-HQ', false),
+  ('hr:pfischer','paul.fischer@northwind.example','paul.fischer@example.com','Paul Fischer','NWA-OAK', false),
+  ('hr:mtanaka','mia.tanaka@northwind.example','mia.tanaka@example.com','Mia Tanaka','NWA-ATL', true),
+  ('hr:lromero','lucas.romero@northwind.example','lucas.romero@example.com','Lucas Romero','NWA-DAL', false),
+  ('hr:arao','anika.rao@northwind.example','anika.rao@example.com','Anika Rao','NWA-HQ', false),
+  ('hr:ewong','ethan.wong@northwind.example','ethan.wong@example.com','Ethan Wong','NWA-CHI', false)
 ) AS v(ext, email, pemail, name, gcode, fa)
 JOIN groups g ON g.code = v.gcode
 ON CONFLICT (email) DO NOTHING;
@@ -50,20 +50,20 @@ INSERT INTO assets (asset_tag, category_id, group_id, serial_number, manufacture
 SELECT v.tag, c.id, g.id, v.serial, v.mfr, v.model, v.status, u.id, v.office, false,
        (v.acquired)::date, (v.due)::date, (v.disposed)::date
 FROM (VALUES
-  ('NWA-CMP-20001','5CD2391AA1','Dell','Latitude 7450','assigned','sarah.lindgren@northwind.example','Headquarters','NWA-HQ','2024-02-10', NULL, NULL),
-  ('NWA-CMP-20002','5CD2391BB2','Dell','Latitude 7450','assigned','marcus.webb@northwind.example','Atlanta Field Office','NWA-ATL','2024-02-10','2026-05-15', NULL),
-  ('NWA-CMP-20003','PF3KX091','Lenovo','ThinkPad X1 Carbon','assigned','elena.castillo@northwind.example','Dallas Field Office','NWA-DAL','2023-09-22', NULL, NULL),
-  ('NWA-CMP-20004','PF3KX092','Lenovo','ThinkPad X1 Carbon','assigned','devon.brooks@northwind.example','Headquarters','NWA-HQ','2023-09-22', NULL, NULL),
-  ('NWA-CMP-20005','C02XENON9','Apple','MacBook Pro 14','assigned','aisha.rahman@northwind.example','Chicago Field Office','NWA-CHI','2025-01-15', NULL, NULL),
-  ('NWA-CMP-20006','C02XENO10','Apple','MacBook Pro 14','assigned','caleb.stone@northwind.example','Oakland Field Office','NWA-OAK','2025-01-15','2026-05-28', NULL),
-  ('NWA-CMP-20007','5CG2401HP1','HP','EliteBook 840','assigned','nina.petrov@northwind.example','Headquarters','NWA-HQ','2024-06-30', NULL, NULL),
-  ('NWA-CMP-20008','5CG2401HP2','HP','EliteBook 840','assigned','omar.haddad@northwind.example','Atlanta Field Office','NWA-ATL','2024-06-30', NULL, NULL),
-  ('NWA-CMP-20009','MSL5-0099','Microsoft','Surface Laptop 5','assigned','rosa.mendez@northwind.example','Dallas Field Office','NWA-DAL','2024-11-05', NULL, NULL),
-  ('NWA-CMP-20010','PF3KT140A','Lenovo','ThinkPad T14','assigned','theo.walsh@northwind.example','Chicago Field Office','NWA-CHI','2023-04-18', NULL, NULL),
-  ('NWA-CMP-20011','PF3KT140B','Lenovo','ThinkPad T14','assigned','grace.okafor@northwind.example','Headquarters','NWA-HQ','2023-04-18', NULL, NULL),
-  ('NWA-CMP-20012','5CD25PRX01','Dell','Precision 5570','assigned','henry.schmidt@northwind.example','Oakland Field Office','NWA-OAK','2025-03-01', NULL, NULL),
-  ('NWA-CMP-20013','5CD25PRX02','Dell','Precision 5570','assigned','victor.reyes@northwind.example','Dallas Field Office','NWA-DAL','2025-03-01', NULL, NULL),
-  ('NWA-CMP-20014','5CG2401HP3','HP','EliteBook 840','assigned','maya.patel@northwind.example','Headquarters','NWA-HQ','2024-06-30', NULL, NULL),
+  ('NWA-CMP-20001','5CD2391AA1','Dell','Latitude 7450','assigned','emily.hayes@northwind.example','Headquarters','NWA-HQ','2024-02-10', NULL, NULL),
+  ('NWA-CMP-20002','5CD2391BB2','Dell','Latitude 7450','assigned','nathan.price@northwind.example','Atlanta Field Office','NWA-ATL','2024-02-10','2026-05-15', NULL),
+  ('NWA-CMP-20003','PF3KX091','Lenovo','ThinkPad X1 Carbon','assigned','sofia.ramirez@northwind.example','Dallas Field Office','NWA-DAL','2023-09-22', NULL, NULL),
+  ('NWA-CMP-20004','PF3KX092','Lenovo','ThinkPad X1 Carbon','assigned','kevin.grant@northwind.example','Headquarters','NWA-HQ','2023-09-22', NULL, NULL),
+  ('NWA-CMP-20005','C02XENON9','Apple','MacBook Pro 14','assigned','hannah.lee@northwind.example','Chicago Field Office','NWA-CHI','2025-01-15', NULL, NULL),
+  ('NWA-CMP-20006','C02XENO10','Apple','MacBook Pro 14','assigned','ryan.mitchell@northwind.example','Oakland Field Office','NWA-OAK','2025-01-15','2026-05-28', NULL),
+  ('NWA-CMP-20007','5CG2401HP1','HP','EliteBook 840','assigned','laura.bishop@northwind.example','Headquarters','NWA-HQ','2024-06-30', NULL, NULL),
+  ('NWA-CMP-20008','5CG2401HP2','HP','EliteBook 840','assigned','samuel.turner@northwind.example','Atlanta Field Office','NWA-ATL','2024-06-30', NULL, NULL),
+  ('NWA-CMP-20009','MSL5-0099','Microsoft','Surface Laptop 5','assigned','isabel.torres@northwind.example','Dallas Field Office','NWA-DAL','2024-11-05', NULL, NULL),
+  ('NWA-CMP-20010','PF3KT140A','Lenovo','ThinkPad T14','assigned','owen.parker@northwind.example','Chicago Field Office','NWA-CHI','2023-04-18', NULL, NULL),
+  ('NWA-CMP-20011','PF3KT140B','Lenovo','ThinkPad T14','assigned','chloe.adams@northwind.example','Headquarters','NWA-HQ','2023-04-18', NULL, NULL),
+  ('NWA-CMP-20012','5CD25PRX01','Dell','Precision 5570','assigned','paul.fischer@northwind.example','Oakland Field Office','NWA-OAK','2025-03-01', NULL, NULL),
+  ('NWA-CMP-20013','5CD25PRX02','Dell','Precision 5570','assigned','lucas.romero@northwind.example','Dallas Field Office','NWA-DAL','2025-03-01', NULL, NULL),
+  ('NWA-CMP-20014','5CG2401HP3','HP','EliteBook 840','assigned','anika.rao@northwind.example','Headquarters','NWA-HQ','2024-06-30', NULL, NULL),
   ('NWA-CMP-20015','MXC9Q14LZ9','Dell','Latitude 7450','available', NULL,'Headquarters','NWA-HQ','2025-02-20', NULL, NULL),
   ('NWA-CMP-20016','MXC9Q14LZ0','Dell','Latitude 7450','available', NULL,'Atlanta Field Office','NWA-ATL','2025-02-20', NULL, NULL),
   ('NWA-CMP-20017','PF3KX093','Lenovo','ThinkPad X1 Carbon','available', NULL,'Dallas Field Office','NWA-DAL','2025-04-10', NULL, NULL),
@@ -84,17 +84,17 @@ WHERE NOT EXISTS (SELECT 1 FROM assets a WHERE a.asset_tag = v.tag);
 INSERT INTO custody_events (asset_id, from_user_id, to_user_id, event_type, performed_by, event_at, notes)
 SELECT a.id, fu.id, tu.id, v.etype, pb.id, (v.at)::timestamptz, v.notes
 FROM (VALUES
-  ('NWA-CMP-20001', NULL,'sarah.lindgren@northwind.example','issue','jordan.rivera@northwind.example','2024-02-12 10:00-05','Initial issuance at onboarding'),
-  ('NWA-CMP-20002', NULL,'marcus.webb@northwind.example','issue','jordan.rivera@northwind.example','2024-02-12 10:20-05','Initial issuance at onboarding'),
-  ('NWA-CMP-20003', NULL,'elena.castillo@northwind.example','issue','logan.kim@northwind.example','2023-09-25 09:15-04','Initial issuance'),
-  ('NWA-CMP-20004', NULL,'devon.brooks@northwind.example','issue','jordan.rivera@northwind.example','2023-09-25 09:30-04','Initial issuance'),
-  ('NWA-CMP-20005', NULL,'aisha.rahman@northwind.example','issue','logan.kim@northwind.example','2025-01-17 11:00-05','Initial issuance'),
-  ('NWA-CMP-20006', NULL,'caleb.stone@northwind.example','issue','jordan.rivera@northwind.example','2025-01-17 11:20-05','Initial issuance'),
-  ('NWA-CMP-20007', NULL,'nina.petrov@northwind.example','issue','jordan.rivera@northwind.example','2024-07-02 08:45-04','Initial issuance'),
-  ('NWA-CMP-20011','grace.okafor@northwind.example','grace.okafor@northwind.example','transfer','jordan.rivera@northwind.example','2025-05-09 13:30-04','Reassigned within Headquarters'),
-  ('NWA-CMP-20023', NULL,'devon.brooks@northwind.example','issue','jordan.rivera@northwind.example','2020-08-05 10:00-04','Initial issuance'),
-  ('NWA-CMP-20023','devon.brooks@northwind.example', NULL,'disposition','dana.park@northwind.example','2026-04-30 15:00-04','End of life, sanitized and surplused'),
-  ('NWA-CMP-20024', NULL, NULL,'disposition','dana.park@northwind.example','2026-03-18 14:00-04','End of life, sanitized and surplused')
+  ('NWA-CMP-20001', NULL,'emily.hayes@northwind.example','issue','casey.morgan@northwind.example','2024-02-12 10:00-05','Initial issuance at onboarding'),
+  ('NWA-CMP-20002', NULL,'nathan.price@northwind.example','issue','casey.morgan@northwind.example','2024-02-12 10:20-05','Initial issuance at onboarding'),
+  ('NWA-CMP-20003', NULL,'sofia.ramirez@northwind.example','issue','drew.carter@northwind.example','2023-09-25 09:15-04','Initial issuance'),
+  ('NWA-CMP-20004', NULL,'kevin.grant@northwind.example','issue','casey.morgan@northwind.example','2023-09-25 09:30-04','Initial issuance'),
+  ('NWA-CMP-20005', NULL,'hannah.lee@northwind.example','issue','drew.carter@northwind.example','2025-01-17 11:00-05','Initial issuance'),
+  ('NWA-CMP-20006', NULL,'ryan.mitchell@northwind.example','issue','casey.morgan@northwind.example','2025-01-17 11:20-05','Initial issuance'),
+  ('NWA-CMP-20007', NULL,'laura.bishop@northwind.example','issue','casey.morgan@northwind.example','2024-07-02 08:45-04','Initial issuance'),
+  ('NWA-CMP-20011','chloe.adams@northwind.example','chloe.adams@northwind.example','transfer','casey.morgan@northwind.example','2025-05-09 13:30-04','Reassigned within Headquarters'),
+  ('NWA-CMP-20023', NULL,'kevin.grant@northwind.example','issue','casey.morgan@northwind.example','2020-08-05 10:00-04','Initial issuance'),
+  ('NWA-CMP-20023','kevin.grant@northwind.example', NULL,'disposition','taylor.ellis@northwind.example','2026-04-30 15:00-04','End of life, sanitized and surplused'),
+  ('NWA-CMP-20024', NULL, NULL,'disposition','taylor.ellis@northwind.example','2026-03-18 14:00-04','End of life, sanitized and surplused')
 ) AS v(tag, from_email, to_email, etype, perf_email, at, notes)
 JOIN assets a ON a.asset_tag = v.tag
 LEFT JOIN app_users fu ON fu.email = v.from_email
@@ -161,14 +161,14 @@ WHERE NOT EXISTS (SELECT 1 FROM maintenances m WHERE m.asset_id = a.id AND m.tit
 INSERT INTO asset_requests (request_number, requested_by, item_label, category, status, notes, decided_at)
 SELECT v.num, u.id, v.item, v.cat, v.status, v.notes, (v.decided)::timestamptz
 FROM (VALUES
-  ('REQ-2026-0101','sarah.lindgren@northwind.example','Second monitor (27 inch)','Peripherals','pending','Dual-monitor setup for analysis work', NULL),
-  ('REQ-2026-0102','marcus.webb@northwind.example','Docking station','Peripherals','approved','Standard issue for field laptop','2026-06-03 10:00-04'),
-  ('REQ-2026-0103','elena.castillo@northwind.example','Noise-cancelling headset','Peripherals','fulfilled','For remote depositions','2026-05-20 09:00-04'),
-  ('REQ-2026-0104','devon.brooks@northwind.example','Laptop replacement','IT Equipment','pending','Current unit past refresh cycle', NULL),
-  ('REQ-2026-0105','aisha.rahman@northwind.example','External SSD (encrypted)','Peripherals','denied','Use network storage instead','2026-05-27 13:00-04'),
-  ('REQ-2026-0106','nina.petrov@northwind.example','Webcam','Peripherals','approved','Replacement for failed built-in camera','2026-06-06 11:00-04'),
-  ('REQ-2026-0107','theo.walsh@northwind.example','Standing desk converter','Office Furniture','pending','Ergonomic accommodation', NULL),
-  ('REQ-2026-0108','grace.okafor@northwind.example','YubiKey (spare)','Security','fulfilled','Backup security key','2026-05-15 14:30-04')
+  ('REQ-2026-0101','emily.hayes@northwind.example','Second monitor (27 inch)','Peripherals','pending','Dual-monitor setup for analysis work', NULL),
+  ('REQ-2026-0102','nathan.price@northwind.example','Docking station','Peripherals','approved','Standard issue for field laptop','2026-06-03 10:00-04'),
+  ('REQ-2026-0103','sofia.ramirez@northwind.example','Noise-cancelling headset','Peripherals','fulfilled','For remote depositions','2026-05-20 09:00-04'),
+  ('REQ-2026-0104','kevin.grant@northwind.example','Laptop replacement','IT Equipment','pending','Current unit past refresh cycle', NULL),
+  ('REQ-2026-0105','hannah.lee@northwind.example','External SSD (encrypted)','Peripherals','denied','Use network storage instead','2026-05-27 13:00-04'),
+  ('REQ-2026-0106','laura.bishop@northwind.example','Webcam','Peripherals','approved','Replacement for failed built-in camera','2026-06-06 11:00-04'),
+  ('REQ-2026-0107','owen.parker@northwind.example','Standing desk converter','Office Furniture','pending','Ergonomic accommodation', NULL),
+  ('REQ-2026-0108','chloe.adams@northwind.example','YubiKey (spare)','Security','fulfilled','Backup security key','2026-05-15 14:30-04')
 ) AS v(num, req_email, item, cat, status, notes, decided)
 JOIN app_users u ON u.email = v.req_email
 ON CONFLICT (request_number) DO NOTHING;
@@ -177,10 +177,10 @@ ON CONFLICT (request_number) DO NOTHING;
 INSERT INTO workflows (workflow_number, group_id, workflow_type, subject_user_id, owner_user_id, status, stage, due_on)
 SELECT v.num, g.id, v.wtype, subj.id, owner.id, v.status, v.stage, (v.due)::date
 FROM (VALUES
-  ('WF-2026-0440','NWA-HQ','onboarding','sarah.lindgren@northwind.example','jordan.rivera@northwind.example','completed','Issued','2026-02-12'),
-  ('WF-2026-0441','NWA-DAL','offboarding','victor.reyes@northwind.example','logan.kim@northwind.example','in_review','Equipment return','2026-06-18'),
-  ('WF-2026-0442','NWA-HQ','transfer','grace.okafor@northwind.example','jordan.rivera@northwind.example','ready','Approver review','2026-06-14'),
-  ('WF-2026-0443','NWA-ATL','disposition', NULL,'dana.park@northwind.example','at_risk','Escalated review','2026-06-09')
+  ('WF-2026-0440','NWA-HQ','onboarding','emily.hayes@northwind.example','casey.morgan@northwind.example','completed','Issued','2026-02-12'),
+  ('WF-2026-0441','NWA-DAL','offboarding','lucas.romero@northwind.example','drew.carter@northwind.example','in_review','Equipment return','2026-06-18'),
+  ('WF-2026-0442','NWA-HQ','transfer','chloe.adams@northwind.example','casey.morgan@northwind.example','ready','Approver review','2026-06-14'),
+  ('WF-2026-0443','NWA-ATL','disposition', NULL,'taylor.ellis@northwind.example','at_risk','Escalated review','2026-06-09')
 ) AS v(num, gcode, wtype, subj_email, owner_email, status, stage, due)
 JOIN groups g ON g.code = v.gcode
 LEFT JOIN app_users subj ON subj.email = v.subj_email
@@ -190,11 +190,11 @@ ON CONFLICT (workflow_number) DO NOTHING;
 INSERT INTO approvals (approval_number, workflow_id, approver_user_id, request_summary, status, submitted_at, decided_at, decision_notes)
 SELECT v.num, w.id, ap.id, v.summary, v.status, (v.sub)::timestamptz, (v.dec)::timestamptz, v.notes
 FROM (VALUES
-  ('APR-3410','WF-2026-0441','avery.chen@northwind.example','Offboarding equipment return for Victor Reyes','pending','2026-06-08 09:00-04', NULL, NULL),
-  ('APR-3411','WF-2026-0442','logan.kim@northwind.example','Custody transfer of NWA-CMP-20011 within Headquarters','approved','2026-06-05 10:00-04','2026-06-06 09:30-04','Operational need confirmed'),
-  ('APR-3412','WF-2026-0443','avery.chen@northwind.example','Disposition batch for retired Atlanta laptops','escalated','2026-06-04 08:00-04', NULL, NULL),
-  ('APR-3413', NULL,'dana.park@northwind.example','Bulk accessory purchase, docking stations','approved','2026-05-30 11:00-04','2026-06-02 10:00-04','Within budget'),
-  ('APR-3414', NULL,'avery.chen@northwind.example','Replacement laptop request for Devon Brooks','denied','2026-05-22 14:00-04','2026-05-24 09:00-04','Unit not yet past refresh cycle')
+  ('APR-3410','WF-2026-0441','riley.bennett@northwind.example','Offboarding equipment return for Lucas Romero','pending','2026-06-08 09:00-04', NULL, NULL),
+  ('APR-3411','WF-2026-0442','drew.carter@northwind.example','Custody transfer of NWA-CMP-20011 within Headquarters','approved','2026-06-05 10:00-04','2026-06-06 09:30-04','Operational need confirmed'),
+  ('APR-3412','WF-2026-0443','riley.bennett@northwind.example','Disposition batch for retired Atlanta laptops','escalated','2026-06-04 08:00-04', NULL, NULL),
+  ('APR-3413', NULL,'taylor.ellis@northwind.example','Bulk accessory purchase, docking stations','approved','2026-05-30 11:00-04','2026-06-02 10:00-04','Within budget'),
+  ('APR-3414', NULL,'riley.bennett@northwind.example','Replacement laptop request for Kevin Grant','denied','2026-05-22 14:00-04','2026-05-24 09:00-04','Unit not yet past refresh cycle')
 ) AS v(num, wf, approver_email, summary, status, sub, dec, notes)
 LEFT JOIN workflows w ON w.workflow_number = v.wf
 JOIN app_users ap ON ap.email = v.approver_email
@@ -204,24 +204,24 @@ ON CONFLICT (approval_number) DO NOTHING;
 INSERT INTO audit_log (audit_number, actor_user_id, actor_label, action, record_type, record_id, result, metadata, created_at)
 SELECT v.num, u.id, u.display_name, v.action, v.rtype, v.rid, v.result, '{"source":"seed"}'::jsonb, (v.at)::timestamptz
 FROM (VALUES
-  ('AUD-DM0001','jordan.rivera@northwind.example','Created computer asset','asset','NWA-CMP-20019','Logged','2026-05-19 09:12-04'),
-  ('AUD-DM0002','jordan.rivera@northwind.example','Created computer asset','asset','NWA-CMP-20018','Logged','2026-05-19 09:14-04'),
-  ('AUD-DM0003','logan.kim@northwind.example','Transferred computer custody','asset','NWA-CMP-20011','Logged','2026-05-21 13:31-04'),
-  ('AUD-DM0004','dana.park@northwind.example','Approved request','approval','APR-3413','Completed','2026-06-02 10:00-04'),
-  ('AUD-DM0005','avery.chen@northwind.example','Denied request','approval','APR-3414','Completed','2026-05-24 09:00-04'),
-  ('AUD-DM0006','jordan.rivera@northwind.example','Recorded maintenance','asset','NWA-CMP-20003','Logged','2026-05-12 10:05-04'),
-  ('AUD-DM0007','jordan.rivera@northwind.example','Issued accessory','accessory','Wireless Mouse','Logged','2026-05-26 15:40-04'),
-  ('AUD-DM0008','logan.kim@northwind.example','Issued consumable','consumable','Toner Cartridge 58A','Logged','2026-05-28 11:10-04'),
-  ('AUD-DM0009','dana.park@northwind.example','Dispositioned computer asset','asset','NWA-CMP-20024','Logged','2026-03-18 14:00-04'),
-  ('AUD-DM0010','dana.park@northwind.example','Dispositioned computer asset','asset','NWA-CMP-20023','Logged','2026-04-30 15:00-04'),
-  ('AUD-DM0011','jordan.rivera@northwind.example','Checked in computer asset','asset','NWA-CMP-20015','Logged','2026-06-01 09:00-04'),
-  ('AUD-DM0012','jordan.rivera@northwind.example','Recorded maintenance','asset','NWA-CMP-20020','Logged','2026-06-02 09:30-04'),
-  ('AUD-DM0013','logan.kim@northwind.example','Recorded maintenance','asset','NWA-CMP-20021','Logged','2026-06-05 10:15-04'),
-  ('AUD-DM0014','jordan.rivera@northwind.example','Created computer asset','asset','NWA-CMP-20012','Logged','2026-06-07 08:20-04'),
-  ('AUD-DM0015','jordan.rivera@northwind.example','Issued computer asset','asset','NWA-CMP-20013','Logged','2026-06-08 14:45-04'),
-  ('AUD-DM0016','dana.park@northwind.example','Updated custom field','custom_field','fisma-system','Logged','2026-06-09 10:30-04'),
-  ('AUD-DM0017','jordan.rivera@northwind.example','Transferred computer custody','asset','NWA-CMP-20022','Logged','2026-06-09 15:05-04'),
-  ('AUD-DM0018','avery.chen@northwind.example','Approved request','approval','APR-3411','Completed','2026-06-06 09:30-04')
+  ('AUD-DM0001','casey.morgan@northwind.example','Created computer asset','asset','NWA-CMP-20019','Logged','2026-05-19 09:12-04'),
+  ('AUD-DM0002','casey.morgan@northwind.example','Created computer asset','asset','NWA-CMP-20018','Logged','2026-05-19 09:14-04'),
+  ('AUD-DM0003','drew.carter@northwind.example','Transferred computer custody','asset','NWA-CMP-20011','Logged','2026-05-21 13:31-04'),
+  ('AUD-DM0004','taylor.ellis@northwind.example','Approved request','approval','APR-3413','Completed','2026-06-02 10:00-04'),
+  ('AUD-DM0005','riley.bennett@northwind.example','Denied request','approval','APR-3414','Completed','2026-05-24 09:00-04'),
+  ('AUD-DM0006','casey.morgan@northwind.example','Recorded maintenance','asset','NWA-CMP-20003','Logged','2026-05-12 10:05-04'),
+  ('AUD-DM0007','casey.morgan@northwind.example','Issued accessory','accessory','Wireless Mouse','Logged','2026-05-26 15:40-04'),
+  ('AUD-DM0008','drew.carter@northwind.example','Issued consumable','consumable','Toner Cartridge 58A','Logged','2026-05-28 11:10-04'),
+  ('AUD-DM0009','taylor.ellis@northwind.example','Dispositioned computer asset','asset','NWA-CMP-20024','Logged','2026-03-18 14:00-04'),
+  ('AUD-DM0010','taylor.ellis@northwind.example','Dispositioned computer asset','asset','NWA-CMP-20023','Logged','2026-04-30 15:00-04'),
+  ('AUD-DM0011','casey.morgan@northwind.example','Checked in computer asset','asset','NWA-CMP-20015','Logged','2026-06-01 09:00-04'),
+  ('AUD-DM0012','casey.morgan@northwind.example','Recorded maintenance','asset','NWA-CMP-20020','Logged','2026-06-02 09:30-04'),
+  ('AUD-DM0013','drew.carter@northwind.example','Recorded maintenance','asset','NWA-CMP-20021','Logged','2026-06-05 10:15-04'),
+  ('AUD-DM0014','casey.morgan@northwind.example','Created computer asset','asset','NWA-CMP-20012','Logged','2026-06-07 08:20-04'),
+  ('AUD-DM0015','casey.morgan@northwind.example','Issued computer asset','asset','NWA-CMP-20013','Logged','2026-06-08 14:45-04'),
+  ('AUD-DM0016','taylor.ellis@northwind.example','Updated custom field','custom_field','fisma-system','Logged','2026-06-09 10:30-04'),
+  ('AUD-DM0017','casey.morgan@northwind.example','Transferred computer custody','asset','NWA-CMP-20022','Logged','2026-06-09 15:05-04'),
+  ('AUD-DM0018','riley.bennett@northwind.example','Approved request','approval','APR-3411','Completed','2026-06-06 09:30-04')
 ) AS v(num, actor_email, action, rtype, rid, result, at)
 JOIN app_users u ON u.email = v.actor_email
 ON CONFLICT (audit_number) DO NOTHING;
@@ -230,11 +230,11 @@ ON CONFLICT (audit_number) DO NOTHING;
 INSERT INTO accessory_checkouts (accessory_id, assigned_user_id, notes)
 SELECT acc.id, u.id, v.notes
 FROM (VALUES
-  ('Wireless Mouse','sarah.lindgren@northwind.example','Standard issue'),
-  ('Wireless Mouse','marcus.webb@northwind.example','Standard issue'),
-  ('USB-C Dock','elena.castillo@northwind.example','Field laptop dock'),
-  ('USB-C Dock','nina.petrov@northwind.example','Desk setup'),
-  ('YubiKey 5 NFC','grace.okafor@northwind.example','Security key')
+  ('Wireless Mouse','emily.hayes@northwind.example','Standard issue'),
+  ('Wireless Mouse','nathan.price@northwind.example','Standard issue'),
+  ('USB-C Dock','sofia.ramirez@northwind.example','Field laptop dock'),
+  ('USB-C Dock','laura.bishop@northwind.example','Desk setup'),
+  ('YubiKey 5 NFC','chloe.adams@northwind.example','Security key')
 ) AS v(acc_name, user_email, notes)
 JOIN accessories acc ON acc.name = v.acc_name
 JOIN app_users u ON u.email = v.user_email
@@ -245,10 +245,10 @@ WHERE NOT EXISTS (
 INSERT INTO consumable_issues (consumable_id, assigned_user_id, notes)
 SELECT con.id, u.id, v.notes
 FROM (VALUES
-  ('Toner Cartridge 58A','devon.brooks@northwind.example','Printer refill'),
-  ('AA Batteries (pack)','omar.haddad@northwind.example','Field equipment'),
-  ('Evidence Bags (large)','victor.reyes@northwind.example','Case intake'),
-  ('AA Batteries (pack)','theo.walsh@northwind.example','Field equipment')
+  ('Toner Cartridge 58A','kevin.grant@northwind.example','Printer refill'),
+  ('AA Batteries (pack)','samuel.turner@northwind.example','Field equipment'),
+  ('Evidence Bags (large)','lucas.romero@northwind.example','Case intake'),
+  ('AA Batteries (pack)','owen.parker@northwind.example','Field equipment')
 ) AS v(con_name, user_email, notes)
 JOIN consumables con ON con.name = v.con_name
 JOIN app_users u ON u.email = v.user_email

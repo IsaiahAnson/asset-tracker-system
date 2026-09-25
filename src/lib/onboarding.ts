@@ -17,12 +17,12 @@ import { writeAuditLog } from "@/lib/audit";
 // ============================================================================
 
 const FIRST_NAMES = [
-  "Priya", "Marcus", "Elena", "Devon", "Aisha",
-  "Caleb", "Nina", "Omar", "Rosa", "Theo"
+  "Alicia", "Brandon", "Carmen", "Derek", "Fiona",
+  "Gavin", "Irene", "Jonah", "Keira", "Marco"
 ];
 const LAST_NAMES = [
-  "Nair", "Webb", "Ortiz", "Brooks", "Khan",
-  "Reyes", "Cole", "Hassan", "Flynn", "Park"
+  "Sutton", "Delgado", "Hartley", "Quinn", "Barrett",
+  "Nolan", "Vance", "Whitaker", "Moreno", "Lowell"
 ];
 
 function pick<T>(arr: T[]): T {

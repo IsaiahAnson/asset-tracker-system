@@ -103,7 +103,7 @@ ON CONFLICT (email) DO NOTHING;
 
 -- 3. Seed: body armor units --------------------------------------------------
 
--- Jordan Rivera carries an issued Point Blank vest paired with the assigned
+-- Casey Morgan carries an issued Point Blank vest paired with the assigned
 -- Sig Sauer (NWA-FRM-00471). Two additional vests sit in inventory.
 INSERT INTO assets (asset_tag, category_id, group_id, serial_number, manufacturer, model, status, current_custodian_id, office, high_sensitivity, acquired_on)
 SELECT 'NWA-ARM-00121', c.id, g.id, 'BAE-2024-00121', 'Point Blank', 'Vision IIIA',
@@ -113,7 +113,7 @@ SELECT 'NWA-ARM-00121', c.id, g.id, 'BAE-2024-00121', 'Point Blank', 'Vision III
   CROSS JOIN app_users u
  WHERE c.code = 'body_armor'
    AND g.code = 'NWA'
-   AND u.email = 'jordan.rivera@northwind.example'
+   AND u.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_tag) DO NOTHING;
 
 INSERT INTO assets (asset_tag, category_id, group_id, serial_number, manufacturer, model, status, office, high_sensitivity, acquired_on)
@@ -146,34 +146,34 @@ ON CONFLICT (asset_tag) DO NOTHING;
 
 -- 5. Seed: verifications for existing firearms -------------------------------
 
--- NWA-FRM-00471 (Jordan Rivera's assigned Sig Sauer) — all three mandatory
+-- NWA-FRM-00471 (Casey Morgan's assigned Sig Sauer) — all three mandatory
 -- checks PASSED and in date. Demonstrates the "ready to issue" state.
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'ncic_background', 'passed', v.id, TIMESTAMPTZ '2026-01-15 09:00-05',
        DATE '2027-01-15', 'NCIC III response clean; rerun annually.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'armor_inspection', 'passed', v.id, TIMESTAMPTZ '2026-02-12 10:30-05',
        DATE '2026-08-12', 'Bi-annual armor inspection: plates intact, retention straps OK.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'deployment_justification', 'passed', v.id, TIMESTAMPTZ '2026-01-20 14:00-05',
        NULL, 'Field investigative duties; approved by division lead.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'qualification', 'passed', v.id, TIMESTAMPTZ '2026-03-04 13:00-05',
        DATE '2026-09-04', 'Quarterly range qualification; min score met.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00471' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 -- NWA-FRM-00472 — armor inspection EXPIRED and deployment justification
@@ -182,14 +182,14 @@ INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verifie
 SELECT a.id, 'ncic_background', 'passed', v.id, TIMESTAMPTZ '2025-12-04 09:00-05',
        DATE '2026-12-04', 'Clean.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00472' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00472' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'armor_inspection', 'expired', v.id, TIMESTAMPTZ '2024-11-08 10:30-05',
        DATE '2025-05-08', 'EXPIRED: re-inspection required before issuance.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00472' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00472' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
@@ -205,65 +205,65 @@ INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verifie
 SELECT a.id, 'ncic_background', 'passed', v.id, TIMESTAMPTZ '2026-02-20 10:00-05',
        DATE '2027-02-20', 'Clean.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00503' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00503' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 INSERT INTO sensitive_asset_verifications (asset_id, check_type, status, verified_by_user_id, verified_at, expires_on, notes)
 SELECT a.id, 'armor_inspection', 'passed', v.id, TIMESTAMPTZ '2025-12-15 10:00-05',
        DATE '2026-06-15', 'Bi-annual inspection passed; renewal due soon.'
   FROM assets a, app_users v
- WHERE a.asset_tag = 'NWA-FRM-00503' AND v.email = 'jordan.rivera@northwind.example'
+ WHERE a.asset_tag = 'NWA-FRM-00503' AND v.email = 'casey.morgan@northwind.example'
 ON CONFLICT (asset_id, check_type) DO NOTHING;
 
 -- 6. Seed: multi-stage approval workflow for a firearm issuance --------------
 
--- "Issue NWA-FRM-00472 to Avery Chen" sits in the Internal Affairs stage
+-- "Issue NWA-FRM-00472 to Riley Bennett" sits in the Internal Affairs stage
 -- (3 of 4), so the stepper shows two done, one current, one pending.
 INSERT INTO workflows (workflow_number, group_id, workflow_type, subject_user_id, owner_user_id, status, stage, due_on)
 SELECT 'WF-2026-0431', g.id, 'access_request', subj.id, owner.id,
        'in_review', 'Internal Affairs review', DATE '2026-06-01'
   FROM groups g
-  JOIN app_users owner ON owner.email = 'jordan.rivera@northwind.example'
-  JOIN app_users subj  ON subj.email  = 'avery.chen@northwind.example'
+  JOIN app_users owner ON owner.email = 'casey.morgan@northwind.example'
+  JOIN app_users subj  ON subj.email  = 'riley.bennett@northwind.example'
  WHERE g.code = 'NWA-ATL'
 ON CONFLICT (workflow_number) DO NOTHING;
 
 INSERT INTO approvals (approval_number, workflow_id, approver_user_id, request_summary, status, submitted_at, decided_at, decision_notes, stage_index, stage_name)
 SELECT 'APR-3401', w.id, appr.id,
-       'Sensitive asset issuance request: NWA-FRM-00472 (Sig Sauer P229R DAK) to Avery Chen',
+       'Sensitive asset issuance request: NWA-FRM-00472 (Sig Sauer P229R DAK) to Riley Bennett',
        'approved', TIMESTAMPTZ '2026-05-22 09:00-04', TIMESTAMPTZ '2026-05-22 09:15-04',
        'Request submitted with NCIC clearance attached.', 1, 'Requested'
   FROM workflows w
-  JOIN app_users appr ON appr.email = 'jordan.rivera@northwind.example'
+  JOIN app_users appr ON appr.email = 'casey.morgan@northwind.example'
  WHERE w.workflow_number = 'WF-2026-0431'
 ON CONFLICT (approval_number) DO NOTHING;
 
 INSERT INTO approvals (approval_number, workflow_id, approver_user_id, request_summary, status, submitted_at, decided_at, decision_notes, stage_index, stage_name)
 SELECT 'APR-3402', w.id, appr.id,
-       'Division Lead review: NWA-FRM-00472 issuance to Avery Chen',
+       'Division Lead review: NWA-FRM-00472 issuance to Riley Bennett',
        'approved', TIMESTAMPTZ '2026-05-22 11:00-04', TIMESTAMPTZ '2026-05-23 09:00-04',
        'Operational need confirmed; armor inspection flagged for re-verification before final issuance.',
        2, 'Division Lead'
   FROM workflows w
-  JOIN app_users appr ON appr.email = 'logan.kim@northwind.example'
+  JOIN app_users appr ON appr.email = 'drew.carter@northwind.example'
  WHERE w.workflow_number = 'WF-2026-0431'
 ON CONFLICT (approval_number) DO NOTHING;
 
 INSERT INTO approvals (approval_number, workflow_id, approver_user_id, request_summary, status, submitted_at, stage_index, stage_name)
 SELECT 'APR-3403', w.id, appr.id,
-       'Internal Affairs review: NWA-FRM-00472 issuance to Avery Chen',
+       'Internal Affairs review: NWA-FRM-00472 issuance to Riley Bennett',
        'pending', TIMESTAMPTZ '2026-05-23 09:30-04', 3, 'Internal Affairs'
   FROM workflows w
-  JOIN app_users appr ON appr.email = 'avery.chen@northwind.example'
+  JOIN app_users appr ON appr.email = 'riley.bennett@northwind.example'
  WHERE w.workflow_number = 'WF-2026-0431'
 ON CONFLICT (approval_number) DO NOTHING;
 
 INSERT INTO approvals (approval_number, workflow_id, approver_user_id, request_summary, status, submitted_at, stage_index, stage_name)
 SELECT 'APR-3404', w.id, appr.id,
-       'Final Authorization: NWA-FRM-00472 issuance to Avery Chen',
+       'Final Authorization: NWA-FRM-00472 issuance to Riley Bennett',
        'pending', TIMESTAMPTZ '2026-05-23 09:30-04', 4, 'Authorization'
   FROM workflows w
-  JOIN app_users appr ON appr.email = 'dana.park@northwind.example'
+  JOIN app_users appr ON appr.email = 'taylor.ellis@northwind.example'
  WHERE w.workflow_number = 'WF-2026-0431'
 ON CONFLICT (approval_number) DO NOTHING;
 
@@ -272,6 +272,6 @@ ON CONFLICT (approval_number) DO NOTHING;
 INSERT INTO user_roles (user_id, role_id)
 SELECT u.id, r.id
   FROM app_users u CROSS JOIN roles r
- WHERE u.email = 'jordan.rivera@northwind.example'
+ WHERE u.email = 'casey.morgan@northwind.example'
    AND r.code = 'national_firearms_coordinator'
 ON CONFLICT DO NOTHING;

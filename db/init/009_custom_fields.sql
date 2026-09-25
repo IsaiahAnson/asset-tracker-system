@@ -111,9 +111,9 @@ ON CONFLICT (asset_id, field_definition_id) DO NOTHING;
 -- still applies the migration cleanly.
 DO $$
 BEGIN
-  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'asset_tracker') THEN
-    EXECUTE 'GRANT ALL ON custom_field_definitions TO asset_tracker';
-    EXECUTE 'GRANT ALL ON asset_custom_field_value TO asset_tracker';
+  IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'asset_management') THEN
+    EXECUTE 'GRANT ALL ON custom_field_definitions TO asset_management';
+    EXECUTE 'GRANT ALL ON asset_custom_field_value TO asset_management';
   END IF;
 END
 $$;

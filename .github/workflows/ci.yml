@@ -13,19 +13,19 @@ jobs:
       postgres:
         image: postgres:16-alpine
         env:
-          POSTGRES_DB: asset_tracker
-          POSTGRES_USER: asset_tracker
+          POSTGRES_DB: asset_management
+          POSTGRES_USER: asset_management
           POSTGRES_PASSWORD: ci-password
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U asset_tracker -d asset_tracker"
+          --health-cmd "pg_isready -U asset_management -d asset_management"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
 
     env:
-      DATABASE_URL: postgresql://asset_tracker:ci-password@localhost:5432/asset_tracker
+      DATABASE_URL: postgresql://asset_management:ci-password@localhost:5432/asset_management
       NEXT_TELEMETRY_DISABLED: 1
 
     steps:
@@ -44,7 +44,7 @@ jobs:
         run: |
           for f in db/init/*.sql; do
             echo "Applying $f"
-            psql -v ON_ERROR_STOP=1 -h localhost -U asset_tracker -d asset_tracker -q -f "$f"
+            psql -v ON_ERROR_STOP=1 -h localhost -U asset_management -d asset_management -q -f "$f"
           done
 
       - run: npm run lint

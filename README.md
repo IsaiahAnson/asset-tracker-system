@@ -1,6 +1,6 @@
-# Asset Tracker System
+# Asset Management
 
-[![CI](https://github.com/IsaiahAnson/asset-tracker-system/actions/workflows/ci.yml/badge.svg)](https://github.com/IsaiahAnson/asset-tracker-system/actions/workflows/ci.yml)
+[![CI](https://github.com/IsaiahAnson/asset-management/actions/workflows/ci.yml/badge.svg)](https://github.com/IsaiahAnson/asset-management/actions/workflows/ci.yml)
 
 A full-stack asset lifecycle and custody management app for public-sector organizations.
 It tracks who holds every piece of equipment, how it moved between people and offices, and who
@@ -9,7 +9,7 @@ approved each change. Every write is recorded in an audit log.
 All organizations, people, asset tags and serial numbers in the seed data are fictional
 ("Northwind Agency").
 
-![Asset Tracker dashboard](docs/screenshots/dashboard.png)
+![Asset Management dashboard](docs/screenshots/dashboard.png)
 
 ## Screenshots
 

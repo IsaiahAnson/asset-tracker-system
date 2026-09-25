@@ -6,7 +6,7 @@ import { getPool } from "@/lib/db";
 // single cookie records which seeded user you are "acting as" so that role
 // behavior and audit attribution can be exercised. There is no password check
 // and this must not ship to production as-is.
-const ACTING_USER_COOKIE = "ats-acting-user";
+const ACTING_USER_COOKIE = "am-acting-user";
 
 export type ActingUser = {
   id: string;

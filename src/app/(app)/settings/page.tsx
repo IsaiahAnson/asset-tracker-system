@@ -58,7 +58,7 @@ export default async function AdministrationPage() {
         </div>
         <section className="usa-alert usa-alert--warning">
           <strong>Administrator access required.</strong> The administration tools change settings
-          that affect every user. Switch to an admin account (e.g. Dana Park in the dev login
+          that affect every user. Switch to an admin account (e.g. Taylor Ellis in the dev login
           picker) to manage them.
         </section>
       </div>

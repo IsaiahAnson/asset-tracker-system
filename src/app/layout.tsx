@@ -4,7 +4,7 @@ import "../index.css";
 import "../App.css";
 
 export const metadata: Metadata = {
-  title: "Asset Tracker System",
+  title: "Asset Management",
   description: "Asset lifecycle and custody management for public-sector organizations",
   icons: {
     icon: "/favicon.svg"
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("ats-theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;}catch(e){}})();`
+            __html: `(function(){try{var t=localStorage.getItem("am-theme");if(!t){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.theme=t;}catch(e){}})();`
           }}
         />
       </head>

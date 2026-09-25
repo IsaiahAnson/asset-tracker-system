@@ -15,7 +15,7 @@ export function ThemeToggle() {
   function toggleTheme() {
     const nextDark = !dark;
     document.documentElement.dataset.theme = nextDark ? "dark" : "light";
-    window.localStorage.setItem("ats-theme", nextDark ? "dark" : "light");
+    window.localStorage.setItem("am-theme", nextDark ? "dark" : "light");
     setDark(nextDark);
   }
 

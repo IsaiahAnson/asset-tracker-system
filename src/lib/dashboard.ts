@@ -168,7 +168,7 @@ export async function listActiveWorkflows(): Promise<WorkflowRow[]> {
             : row.workflow_type === "disposition"
               ? "Disposition"
               : "Access request";
-    // Person-centric workflows read as "Onboarding for Sarah Lindgren". Asset
+    // Person-centric workflows read as "Onboarding for Emily Hayes". Asset
     // workflows like disposition have no subject person, so we label them by
     // office ("Disposition, Atlanta Field Office") instead of the awkward
     // "for Unassigned".

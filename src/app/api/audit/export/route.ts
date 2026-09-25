@@ -27,7 +27,7 @@ export async function GET(request: Request) {
   return new Response(body, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="asset-tracker-audit-log-${stamp}.csv"`
+      "Content-Disposition": `attachment; filename="asset-management-audit-log-${stamp}.csv"`
     }
   });
 }

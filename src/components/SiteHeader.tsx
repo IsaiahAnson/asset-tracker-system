@@ -7,7 +7,7 @@ export async function SiteHeader() {
   const actingUser = await getActingUser();
   return (
     <header className="usa-header">
-      <Link href="/dashboard" className="usa-header__title" aria-label="Asset Tracker System home">
+      <Link href="/dashboard" className="usa-header__title" aria-label="Asset Management home">
         <img
           className="usa-header__seal"
           src="/favicon.svg"
@@ -17,7 +17,7 @@ export async function SiteHeader() {
         />
         <span className="usa-header__branding">
           <span className="usa-header__agency">Northwind Agency</span>
-          <span className="usa-header__app-name">Asset Tracker</span>
+          <span className="usa-header__app-name">Asset Management</span>
         </span>
       </Link>
 

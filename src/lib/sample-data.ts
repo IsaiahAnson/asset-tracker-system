@@ -19,7 +19,7 @@ export const computerAssets = [
     id: "NWA-CMP-10482",
     type: "Laptop",
     serial: "MXC4D73KQ2",
-    custodian: "Avery Chen",
+    custodian: "Riley Bennett",
     office: "Atlanta Field Office",
     status: "Assigned",
     lastAction: "Custody transfer",
@@ -39,7 +39,7 @@ export const computerAssets = [
     id: "NWA-CMP-09102",
     type: "Desktop",
     serial: "DTK2A45LM1",
-    custodian: "Marcus Hill",
+    custodian: "Jamie Foster",
     office: "Dallas Field Office",
     status: "Needs approval",
     lastAction: "Supervisor review requested",
@@ -49,7 +49,7 @@ export const computerAssets = [
     id: "NWA-CMP-11732",
     type: "Tablet",
     serial: "TBX7F80A22",
-    custodian: "Priya Shah",
+    custodian: "Grace Holland",
     office: "New York Field Office",
     status: "In transfer",
     lastAction: "Pickup scheduled",
@@ -61,8 +61,8 @@ export const workflows = [
   {
     id: "WF-2026-0412",
     title: "New agent computer issuance",
-    owner: "Jordan Rivera",
-    person: "Avery Chen",
+    owner: "Casey Morgan",
+    person: "Riley Bennett",
     stage: "Supervisor approval",
     status: "In review",
     due: "May 14, 2026"
@@ -70,8 +70,8 @@ export const workflows = [
   {
     id: "WF-2026-0410",
     title: "Offboarding asset recovery",
-    owner: "Jordan Rivera",
-    person: "Sam Patel",
+    owner: "Casey Morgan",
+    person: "Ben Howard",
     stage: "Pickup coordination",
     status: "At risk",
     due: "May 12, 2026"
@@ -79,8 +79,8 @@ export const workflows = [
   {
     id: "WF-2026-0408",
     title: "Laptop custody transfer",
-    owner: "Renee Long",
-    person: "Marcus Hill",
+    owner: "Claire Dawson",
+    person: "Jamie Foster",
     stage: "Asset manager action",
     status: "Ready",
     due: "May 15, 2026"
@@ -113,8 +113,8 @@ export const workflowStages = [
 export const approvals = [
   {
     id: "APR-3381",
-    request: "Computer issuance for Avery Chen",
-    approver: "Dana Williams",
+    request: "Computer issuance for Riley Bennett",
+    approver: "Megan Scott",
     office: "Atlanta Field Office",
     type: "Onboarding",
     submitted: "May 11, 2026",
@@ -122,8 +122,8 @@ export const approvals = [
   },
   {
     id: "APR-3379",
-    request: "Laptop transfer to Marcus Hill",
-    approver: "Leah Brooks",
+    request: "Laptop transfer to Jamie Foster",
+    approver: "Julia Moss",
     office: "Dallas Field Office",
     type: "Transfer",
     submitted: "May 10, 2026",
@@ -132,7 +132,7 @@ export const approvals = [
   {
     id: "APR-3372",
     request: "Vehicle disposition review",
-    approver: "Terry Martin",
+    approver: "Scott Reid",
     office: "Headquarters",
     type: "Disposition",
     submitted: "May 9, 2026",
@@ -144,7 +144,7 @@ export const auditEntries = [
   {
     id: "AUD-900182",
     timestamp: "2026-05-12 09:18 ET",
-    actor: "Jordan Rivera",
+    actor: "Casey Morgan",
     action: "Created custody transfer",
     record: "NWA-CMP-11732",
     result: "Logged"
@@ -160,7 +160,7 @@ export const auditEntries = [
   {
     id: "AUD-900180",
     timestamp: "2026-05-11 16:27 ET",
-    actor: "Dana Williams",
+    actor: "Megan Scott",
     action: "Supervisor approval requested",
     record: "APR-3381",
     result: "Logged"

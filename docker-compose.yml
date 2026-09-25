@@ -1,12 +1,12 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: asset-tracker-system-postgres
+    container_name: asset-management-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-asset_tracker}
-      POSTGRES_USER: ${POSTGRES_USER:-asset_tracker}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-asset_tracker_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-asset_management}
+      POSTGRES_USER: ${POSTGRES_USER:-asset_management}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-asset_management_dev_password}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -21,12 +21,12 @@ services:
   app:
     build:
       context: .
-    container_name: asset-tracker-system-app
+    container_name: asset-management-app
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_URL: ${DATABASE_URL:-postgresql://asset_tracker:asset_tracker_dev_password@postgres:5432/asset_tracker}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://asset_management:asset_management_dev_password@postgres:5432/asset_management}
       NEXT_PUBLIC_APP_ENV: ${NEXT_PUBLIC_APP_ENV:-local}
     ports:
       - "${APP_PORT:-3000}:3000"

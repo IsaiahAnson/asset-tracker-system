@@ -33,7 +33,7 @@ export default async function CustomFieldsPage() {
         <section className="usa-alert usa-alert--warning">
           <strong>Administrator access required.</strong> The custom field builder changes the
           fields every user sees on a form, so it is limited to administrators. Switch to an admin
-          account (e.g. Dana Park in the dev login picker) to manage custom fields.
+          account (e.g. Taylor Ellis in the dev login picker) to manage custom fields.
         </section>
       </div>
     );

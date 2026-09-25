@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 
 type GlobalWithPool = typeof globalThis & {
-  assetTrackerPool?: Pool;
+  assetManagementPool?: Pool;
 };
 
 const globalForPool = globalThis as GlobalWithPool;
@@ -13,12 +13,12 @@ export function getPool() {
     throw new Error("DATABASE_URL is required for database access.");
   }
 
-  if (!globalForPool.assetTrackerPool) {
-    globalForPool.assetTrackerPool = new Pool({
+  if (!globalForPool.assetManagementPool) {
+    globalForPool.assetManagementPool = new Pool({
       connectionString,
       ssl: process.env.PGSSLMODE === "require" ? { rejectUnauthorized: true } : undefined
     });
   }
 
-  return globalForPool.assetTrackerPool;
+  return globalForPool.assetManagementPool;
 }

@@ -23,7 +23,7 @@ export default async function FirearmsPage() {
           <strong>Access required.</strong> Firearms and body armor records are query-filtered by
           the firearms access flag on your account. Your current account does not carry the
           flag, so this inventory is not visible. Switch to a user who has the flag (e.g.,
-          Jordan Rivera in the dev login picker) to view the list. In production this gate is
+          Casey Morgan in the dev login picker) to view the list. In production this gate is
           enforced at the PostgreSQL query layer in addition to the page.
         </section>
       </div>

@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Reset the local Asset Tracker System database to a clean, seeded state.
+# Reset the local Asset Management database to a clean, seeded state.
 #
 # Use during the demo for fast recovery if data gets into a bad shape mid-walkthrough.
 # Drops the database, recreates it, then applies every SQL file in db/init/ in order.
 #
 # Env overrides (optional):
-#   DB_NAME   target database name        (default: asset_tracker)
-#   DB_OWNER  role to own the new DB      (default: asset_tracker; falls back to current user if missing)
+#   DB_NAME   target database name        (default: asset_management)
+#   DB_OWNER  role to own the new DB      (default: asset_management; falls back to current user if missing)
 #
 # Requires: local PostgreSQL reachable via psql with the current shell user (trust auth on
 # Homebrew Postgres is the typical setup). Stop the Next.js dev server first if any
@@ -14,8 +14,8 @@
 
 set -euo pipefail
 
-DB_NAME="${DB_NAME:-asset_tracker}"
-DB_OWNER="${DB_OWNER:-asset_tracker}"
+DB_NAME="${DB_NAME:-asset_management}"
+DB_OWNER="${DB_OWNER:-asset_management}"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 INIT_DIR="$( cd "$SCRIPT_DIR/.." && pwd )/db/init"
 
@@ -53,7 +53,7 @@ done
 
 # Grant the app role access to everything just created. Migrations are applied
 # as the current shell user (a superuser via trust auth), so tables/sequences
-# end up owned by that user. The app connects as DB_OWNER (asset_tracker) and
+# end up owned by that user. The app connects as DB_OWNER (asset_management) and
 # needs explicit privileges, including on future objects. Skipped if the role
 # is absent (fresh laptop fallback above created the DB with the default owner).
 if psql -d postgres -tAc "SELECT 1 FROM pg_roles WHERE rolname = '$DB_OWNER'" | grep -q 1; then

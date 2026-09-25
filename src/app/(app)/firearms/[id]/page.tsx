@@ -51,7 +51,7 @@ export default async function FirearmDetailPage({
         </div>
         <section className="usa-alert usa-alert--warning">
           <strong>Access required.</strong> Firearms records are gated by the firearms access
-          flag on your account. Switch to a user who has the flag (e.g., Jordan Rivera) to view
+          flag on your account. Switch to a user who has the flag (e.g., Casey Morgan) to view
           this record.
         </section>
       </div>

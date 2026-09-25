@@ -12,7 +12,7 @@ export default async function LoginPage() {
         </div>
         <div className="login-card__header">
           <div className="login-card__agency">Northwind Agency</div>
-          <div className="login-card__title">Asset Tracker System</div>
+          <div className="login-card__title">Asset Management</div>
           <div className="login-card__subtitle">Sign in to manage assets, custody and approvals</div>
         </div>
         <div className="login-card__mock-banner" role="status" aria-label="Development notice">
